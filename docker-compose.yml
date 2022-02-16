@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  shortener:
+    environment:
+    - DB_TYPE=mongo
+    - REDIS_URL=redis://redis
+    - MONGO_DB=shortener
+    - MONGO_URL=mongodb://root:root@mongodb:27017
+    build:
+      context: .
+      target: dev
+    volumes:
+    - .:/app:rw,delegated
+    ports:
+    - 8181:8080
+  mongodb:
+    image: mongo:5
+    env_file:
+    - runtime.env
+  redis:
+    image: redis:alpine
