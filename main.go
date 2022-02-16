@@ -35,7 +35,7 @@ func main() {
 
 	app.Get("/", func(c *fiber.Ctx) error {
 		return c.JSON(fiber.Map{
-			"message": "ok",
+			"message": "Hello World!",
 		})
 	})
 
