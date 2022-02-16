@@ -24,6 +24,7 @@
 ## Improvements (Homework) ##
 
 * return responses based on an `accept` header (eg: have other serializer(s) port(s) to provide responses)
+* add validation to check whether requests represent valid URLs
 * experiment with different ways to switch between backends
 * experiment with using different backends alternatively
 * add another backend

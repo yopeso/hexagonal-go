@@ -1,6 +1,8 @@
 package api
 
 import (
+	"errors"
+
 	"github.com/andrei-dascalu/shortener/src/serializer/json"
 	"github.com/andrei-dascalu/shortener/src/serializer/messagepack"
 	"github.com/andrei-dascalu/shortener/src/shortener"
@@ -18,10 +20,14 @@ func NewHandler(svc shortener.RedirectService) RedirectHandler {
 	}
 }
 
-func serializer(contentType string) shortener.LinkSerializer {
+func serializer(contentType string) (shortener.LinkSerializer, error) {
 	if contentType == "application/x-msgpack" {
-		return &messagepack.Serializer{}
+		return &messagepack.Serializer{}, nil
 	}
 
-	return &json.Serializer{}
+	if contentType == "application/json" {
+		return &json.Serializer{}, nil
+	}
+
+	return nil, errors.New("unknown content type")
 }

@@ -13,28 +13,37 @@ func GetSaveHandler(handler RedirectHandler) func(c *fiber.Ctx) error {
 		contentType := c.Get("content-type")
 		metrics.RecordUrlCreatedRequest()
 
-		serializer := serializer(contentType)
+		serializer, err := serializer(contentType)
+
+		if err != nil {
+			return c.Status(http.StatusInternalServerError).JSON(map[string]string{
+				"message": err.Error(),
+			})
+		}
 
 		redirect, err := serializer.Decode(c.Request().Body())
 
 		if err != nil {
-			log.Error().Err(err).Msg("Failed")
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.Status(http.StatusInternalServerError).JSON(map[string]string{
+				"message": err.Error(),
+			})
 		}
 
 		log.Warn().Msg("Preparing to store")
 		err = handler.redirectService.Store(redirect)
 
 		if err != nil {
-			log.Error().Err(err).Msg("Failed")
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.Status(http.StatusInternalServerError).JSON(map[string]string{
+				"message": err.Error(),
+			})
 		}
 
 		responseBody, err := serializer.Encode(redirect)
 
 		if err != nil {
-			log.Error().Err(err).Msg("Failed")
-			return c.SendStatus(http.StatusInternalServerError)
+			return c.Status(http.StatusInternalServerError).JSON(map[string]string{
+				"message": err.Error(),
+			})
 		}
 
 		c.Response().Header.Set("content-type", contentType)

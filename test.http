@@ -7,4 +7,16 @@ content-type: application/json
 
 ###
 
-GET http://localhost:8181/d7LXNMBnR  HTTP/1.1
+GET http://localhost:8181/MS3RAMfng  HTTP/1.1
+
+###
+
+POST https://123.playfabapi.com/Client/RegisterPlayFabUser HTTP/2
+content-type: application/json
+
+{
+    "TitleId": "1234",
+    "Username": "uu1",
+    "Email": "uu1@uu1.io",
+    "Password": "password"
+}
