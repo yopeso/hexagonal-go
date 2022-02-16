@@ -11,6 +11,7 @@ require (
 	github.com/prometheus/client_golang v1.9.0
 	github.com/rs/zerolog v1.26.1
 	github.com/teris-io/shortid v0.0.0-20201117134242-e59966efd125
+	github.com/vmihailenco/msgpack/v5 v5.3.5
 	go.mongodb.org/mongo-driver v1.8.3
 )
 
@@ -35,6 +36,7 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.33.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
+	github.com/vmihailenco/tagparser/v2 v2.0.0 // indirect
 	github.com/xdg-go/pbkdf2 v1.0.0 // indirect
 	github.com/xdg-go/scram v1.0.2 // indirect
 	github.com/xdg-go/stringprep v1.0.2 // indirect

@@ -5,9 +5,9 @@ import (
 	jsoniter "github.com/json-iterator/go"
 )
 
-type JsonSerializer struct{}
+type Serializer struct{}
 
-func (r *JsonSerializer) Decode(input []byte) (*shortener.LinkRedirect, error) {
+func (r *Serializer) Decode(input []byte) (*shortener.LinkRedirect, error) {
 	redirect := &shortener.LinkRedirect{}
 
 	var jsonDeserializer = jsoniter.ConfigCompatibleWithStandardLibrary
@@ -19,7 +19,7 @@ func (r *JsonSerializer) Decode(input []byte) (*shortener.LinkRedirect, error) {
 	return redirect, nil
 }
 
-func (r *JsonSerializer) Encode(input *shortener.LinkRedirect) ([]byte, error) {
+func (r *Serializer) Encode(input *shortener.LinkRedirect) ([]byte, error) {
 	var jsonDeserializer = jsoniter.ConfigCompatibleWithStandardLibrary
 
 	data, err := jsonDeserializer.Marshal(input)
