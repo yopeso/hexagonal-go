@@ -1,6 +1,6 @@
 # Hexagonal Go Workshop #
 
-[Presentation](https://www.google.com)
+[Presentation](https://drive.google.com/file/d/1Q2ZrWSZbkRmLVGtwspbT9l1s1L_T23ZR/view?usp=sharing)
 
 ## Structure ##
 
